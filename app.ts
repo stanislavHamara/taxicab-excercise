@@ -1,1 +1,3 @@
-console.log('hello')
+import { directions } from "./data";
+
+console.log({ directions })
