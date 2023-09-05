@@ -31,7 +31,7 @@ const calculateCurrentCoordinates = (direction: Direction, distance: number, coo
 }
 
 
-const parseDirections = (directions: string[]) => {
+export const parseDirections = (directions: string[]) => {
 
     let currentDirection = Direction.N
     let currentCoordinates: Coordinates = { x: 0, y: 0 }
@@ -40,9 +40,9 @@ const parseDirections = (directions: string[]) => {
         const turnDirection = direction[0]
         const distance = parseInt(direction.slice(1))
         if ((turnDirection !== 'R' && turnDirection !== 'L')) {
-            throw Error(`Input data is invalid. "${turnDirection}" is not a valid turn direction`)
+            throw new Error(`Input data is invalid. "${turnDirection}" is not a valid turn direction`)
         } else if ( isNaN(distance)) {
-            throw Error(`Input data is invalid. "${direction}" does not contain numeric distance value`)
+            throw new Error(`Input data is invalid. "${direction}" does not contain numeric distance value`)
         }
 
         currentDirection = calculateCurrentDirection(turnDirection, currentDirection)
@@ -51,6 +51,3 @@ const parseDirections = (directions: string[]) => {
 
     return Math.abs(currentCoordinates.x) + Math.abs(currentCoordinates.y);
 }
-
-const shortestPath = parseDirections(data)
-console.log({ shortestPath })
