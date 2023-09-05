@@ -47,11 +47,10 @@ const parseDirections = (directions: string[]) => {
 
         currentDirection = calculateCurrentDirection(turnDirection, currentDirection)
         currentCoordinates = calculateCurrentCoordinates(currentDirection, distance, currentCoordinates)
-
-        console.log({currentDirection})
-        console.log({currentCoordinates})
     })
 
+    return Math.abs(currentCoordinates.x) + Math.abs(currentCoordinates.y);
 }
 
-parseDirections(data)
+const shortestPath = parseDirections(data)
+console.log({ shortestPath })
